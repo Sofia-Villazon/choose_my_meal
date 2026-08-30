@@ -1,9 +1,27 @@
 .page {
-  background-color: #f0b144;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .page__content {
+  box-sizing: border-box;
   max-width: 1440px;
+  width: 100%;
   margin: 0 auto;
-  padding: 18px 16px 20px;
+  padding: 0px 128px 20px;
+  background-color: #f0b144;
+}
+
+@media screen and (max-width: 1012px) {
+  .page__content {
+    padding: 0 37px 20px;
+  }
+}
+
+@media screen and (max-width: 766px) {
+  .page__content {
+    padding: 0 17px 20px;
+  }
 }

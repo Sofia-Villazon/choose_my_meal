@@ -1,15 +1,20 @@
+.main {
+  margin: 0;
+}
+
 .main__title {
   margin: 0;
-  font-family: "Cabinet Grotesk";
-  margin-top: 18px;
+  font-family: "Roboto";
+  margin-top: 65px;
   text-align: center;
-  font-size: 72px;
+  font-size: 64px;
 }
 
 .main__subtitle {
   text-align: center;
-  font-family: "Cabinet Grotesk";
-  font-size: 24px;
+  font-family: "Roboto";
+  font-weight: normal;
+  font-size: 40px;
   margin-top: 8px;
   margin-bottom: 56px;
   color: #757575;
@@ -28,17 +33,22 @@
   padding: 0;
   padding-bottom: 107px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(313px, 3fr));
-  gap: 100px;
+  /* grid-template: 1fr 1fr 1fr; */
+  grid-template-columns: repeat(auto-fit, 313px);
+  grid-template-rows: repeat(4, minmax(195px, 414.73px));
+  row-gap: 47px;
+  column-gap: 100px;
   margin-top: 34px;
+  align-content: center;
   justify-content: center;
+  width: 100%;
 }
 
 .cards__btn {
   margin: 0 auto;
   height: 150px;
   width: 200px;
-  background-image: url(../../assets/button_custom.png);
+  background-image: url(../../assets/button_custom.svg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -51,12 +61,51 @@
   padding-bottom: 30px;
 }
 
-@media screen and (max-width: 630px) {
+.cards__btn:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.cards__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media screen and (max-width: 1012px) {
   .cards {
     margin-top: 32px;
   }
 
   .cards__list {
-    padding-bottom: 147px;
+    padding: 0;
+    padding-bottom: 107px;
+    grid-template-columns: repeat(auto-fit, 310px);
+    row-gap: 65px;
+    column-gap: 42px;
+    margin-top: 34px;
+  }
+}
+
+@media screen and (max-width: 766px) {
+  .main__title {
+    margin: 22px 0 20px;
+    font-size: 36px;
+  }
+
+  .main__subtitle {
+    font-size: 20px;
+  }
+
+  .cards {
+    margin: 0;
+  }
+  .cards__list {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 107px;
+    grid-template-columns: repeat(auto-fit, 138px);
+    grid-template-rows: repeat(4, 194px);
+    row-gap: 30.74px;
+    column-gap: 21px;
   }
 }

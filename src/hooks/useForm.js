@@ -1,10 +1,10 @@
 import { useState, useCallback, useEffect } from "react";
 
-function useForm() {
-  const [error, setError] = useState();
+function useForm(defaultValues) {
+  const [error, setError] = useState(defaultValues);
 
   const [isDisabled, setIsDisabled] = useState(true);
-  const [values, setValues] = useState({});
+  const [values, setValues] = useState(defaultValues);
 
   useEffect(() => {
     formHandleChange();
@@ -29,7 +29,7 @@ function useForm() {
     if (!values) return;
     const noErrors = Object.values(error).every((v) => v === "");
     const isEmpty = Object.values(values).some((v) => v === "");
-    setIsDisabled(!noErrors || isEmpty);
+    setIsDisabled(isEmpty);
   }, [error]);
 
   return {

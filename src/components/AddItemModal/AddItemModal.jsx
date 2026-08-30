@@ -3,69 +3,71 @@ import "./AddItemModal.css";
 import { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import useForm from "../../hooks/useForm";
+import { answers } from "../../utils/constants";
 
-function AddItemModal({ questionList, number }) {
-  const isOpen = true;
+function AddItemModal({
+  questions,
+  number,
+  isOpen,
+  closeActiveModal,
+  handleLogAnswer,
+  setCompleted,
+  completed,
+}) {
+  let index;
+  number === undefined ? (index = 0) : (index = number);
+  const questionInfo = Object.values(questions)[index];
+  const {
+    //   handleImage,
+    error,
+    values,
+    setValues,
+    handleChange,
+    formHandleChange,
+  } = useForm(answers);
+  // const test = values.time;
 
-  const questionInfo = questionList[number];
+  const isEmpty = values[questionInfo.type] === "";
 
-  // const {
-  //   handleImage,
-  //   error,
-  //   handleInput,
-  //   // handleRadioBtn,
-  //   setIsChecked,
-  //   isChecked,
-  //   setIsDisabled,
-  //   isDisabled,
-  //   setValues,
-  //   values,
-  //   handleChange,
-  // } = useForm();
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    const hasErrors = Object.values(error).some((e) => e !== "");
 
-  // const handleSubmit = (evt) => {
-  //   evt.preventDefault();
-  //   const hasErrors = Object.values(error).some((e) => e !== "");
-  //   if (!hasErrors) {
-  //     onAddItem(values);
-  //   }
-  // };
+    if (!hasErrors) {
+      handleLogAnswer(questionInfo.type, values[questionInfo.type]);
+    }
+  };
 
-  // useEffect(() => {
-  //   if (!isOpen) {
-  //     setValues(defaultClothValues);
-  //   }
-  // });
-
+  useEffect(() => {
+    if (!isOpen) {
+    }
+  });
   return (
     <ModalWithForm
-      buttonText="Add garment"
+      hiddenButton={false}
+      buttonText="Log answer"
       titleText={questionInfo.question}
-      // closeActiveModal={closeActiveModal}
+      closeActiveModal={closeActiveModal}
       isOpen={isOpen}
-      // onSubmit={handleSubmit}
-      // error={error}
-      // isDisabled={isDisabled}
+      onSubmit={handleSubmit}
+      error={error}
+      isDisabled={isEmpty}
     >
       <fieldset className="modal__fieldset">
         <legend className="modal__legend">Select one answer</legend>
-        <span className="modal__error" id="garment-name-input-error">
-          {/* {error.weather} */}
-        </span>
 
-        <div className="modal__radio-btn"></div>
-        <ul className="cards__list">
+        <ul className="modal__radio-btns">
           {Object.values(questionInfo.answers).map((answer, index) => (
             <li className="modal__radio-btn" key={index}>
               <input
                 type="radio"
                 id={`type-${answer.toLowerCase()}-input`}
                 className="modal__radio-input"
-                name="weather"
+                name={`${questionInfo.type}`}
                 required
                 value={answer.toLowerCase()}
-                // onChange={handleChange}
-                // checked={values.weather === "cold"}
+                onChange={handleChange}
+                checked={values[questionInfo.type] === answer.toLowerCase()}
               />
               <label
                 htmlFor={`type-${answer.toLowerCase()}-input`}

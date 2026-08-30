@@ -1,5 +1,6 @@
 const questions = {
   1: {
+    type: "vibe",
     name: "Energy",
     question: "How are you feeling right now?",
     answers: {
@@ -12,6 +13,7 @@ const questions = {
     },
   },
   2: {
+    type: "difficulty",
     name: "Motivation",
     question: "How much effort do you want to put into cooking?",
     answers: {
@@ -23,6 +25,7 @@ const questions = {
     },
   },
   3: {
+    type: "time",
     name: "Time",
     question: "How much time do you have?",
     answers: {
@@ -34,6 +37,7 @@ const questions = {
     },
   },
   4: {
+    type: "who",
     name: "Who?",
     question: "Who are you cooking for?",
     answers: {
@@ -46,6 +50,7 @@ const questions = {
     },
   },
   5: {
+    type: "category",
     name: "Good for the Mood",
     question: "What kind of food would make you happiest right now?",
     answers: {
@@ -58,6 +63,7 @@ const questions = {
     },
   },
   6: {
+    type: "rating",
     name: "Adventurous",
     question: "How adventurous are you feeling?",
     answers: {
@@ -69,6 +75,7 @@ const questions = {
     },
   },
   7: {
+    type: "filter",
     name: "Food Restrictions",
     question: "Is there anything you want to avoid?",
     answers: {
@@ -83,4 +90,14 @@ const questions = {
   },
 };
 
-export default { questions };
+const answers = {
+  vibe: "",
+  difficulty: "",
+  time: "",
+  who: "",
+  category: "",
+  rating: "",
+  filter: "",
+};
+
+export { questions, answers };

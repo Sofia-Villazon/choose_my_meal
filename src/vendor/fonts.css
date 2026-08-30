@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "Cabinet Grotesk";
-  font-style: medium;
+  font-family: "Roboto";
+  font-style: normal;
   font-weight: 500;
-  src: url("./CabinetGrotesk-Variable.ttf") format("truetype");
+  src: url("./Roboto/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
 }

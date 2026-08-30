@@ -1,20 +1,68 @@
 .card {
-  border: 10px solid #fff;
-
+  margin: 0 auto;
+  background-color: #fcf1df;
+  border: 10px solid #6d2c28;
   border-radius: 16px;
   padding: 20px;
-  width: 313px;
-  height: 414.73px;
-  background-color: #6d2c28;
+  width: 100%;
+
+  height: 100%;
+  max-height: 414.73px;
   justify-content: center;
   display: flex;
+  flex-direction: column;
+  gap: 5px;
   align-items: center;
+  box-sizing: border-box;
+}
+
+.card_completed {
+  border: 10px solid #fcf1df;
+  background-color: #6d2c28;
+}
+
+.card:hover {
+  cursor: pointer;
+  transform: scale(1.05);
 }
 
 .card__title {
-  color: #fff;
+  margin: 0;
+  color: #000000;
   text-align: center;
-  font-family: "Cabinet Grotesk";
-  font-weight: 500px;
-  font-size: 26px;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 24px;
+  max-width: 313px;
+  min-width: 138px;
+}
+
+.card__title_completed {
+  color: #fcf1df;
+}
+
+.card__answer {
+  margin: 0;
+  margin-top: 10px;
+  color: #fcf1df;
+  font-family: "Roboto";
+  font-weight: 200;
+  font-size: 16px;
+  text-align: center;
+}
+
+.card__answer_hide {
+  display: none;
+}
+
+@media screen and (max-width: 766px) {
+  .card {
+    border-width: 6px;
+    border-radius: 16px;
+    padding: 5px;
+  }
+
+  .card__title {
+    font-size: 20px;
+  }
 }

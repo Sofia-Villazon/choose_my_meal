@@ -1,0 +1,108 @@
+.result__title {
+  margin: 65px 0 111px;
+  font-family: "Roboto";
+  margin-top: 65px;
+  text-align: center;
+  font-size: 64px;
+}
+
+.result__cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 139px 139px min-content;
+  grid-template-areas:
+    "tl tm cg"
+    "tl tm ig"
+    "rc rc ig";
+
+  /* justify-content: center; */
+  gap: 15px;
+  margin-top: 46px;
+  max-width: 1390px;
+  width: 100%;
+  background-color: #6d2c28;
+  border-radius: 16px;
+  padding: 15px;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.result__card {
+  background-color: #d3a771;
+  border-radius: 16px;
+  box-sizing: border-box;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.result__card_title {
+  grid-area: tl;
+}
+
+.result__card_time {
+  grid-area: tm;
+}
+
+.result__card_categories {
+  grid-area: cg;
+}
+
+.result__card_recipe {
+  width: 100%;
+  max-width: 901px;
+  grid-area: rc;
+  height: fit-content;
+}
+
+.result__card_ingredients {
+  grid-area: ig;
+}
+
+.result__card__title {
+  margin: 0;
+  font-family: "Roboto";
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: #fff;
+  font-weight: 500;
+}
+
+.result__card__text {
+  margin: 0;
+  font-family: "Roboto";
+  font-size: 16px;
+  line-height: 30px;
+  height: fit-content;
+  color: #6d2c28;
+}
+
+.result__card__image {
+  width: 100%;
+  height: 196px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 10px;
+  background-image: url(../../assets/FrenchToast.png);
+  background-size: cover;
+}
+
+@media screen and (max-width: 766px) {
+  .result__title {
+    margin: 22px 0 20px;
+    font-size: 36px;
+  }
+
+  .result__cards {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    gap: 5px;
+  }
+
+  .result__card__title {
+    font-size: 20px;
+  }
+}
