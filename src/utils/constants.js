@@ -151,5 +151,4 @@ export {
   apiKey,
   handleServerResponse,
   defaultRecipe,
-  someRecipes,
 };

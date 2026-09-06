@@ -24,7 +24,6 @@ import {
   answers,
   apiKey,
   defaultRecipe,
-  someRecipes,
 } from "../../utils/constants";
 
 function App() {
