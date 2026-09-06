@@ -187,10 +187,7 @@ function App() {
               element={
                 <ProtectedRoute>
                   {isLoading ? (
-                    <CustomPreloader
-                      emptyError={resultRecipe === defaultRecipe}
-                      apiError={apiError}
-                    />
+                    <CustomPreloader apiError={apiError} />
                   ) : (
                     <Result />
                   )}

@@ -11,7 +11,7 @@ The idea of the application is pretty simple - the user fills a 6 multiple quest
 
 ## Video about my project
 
-- [About Final Project](https://drive.google.com/file/d/1mzrL7Cf9-Byj4xhx_o4PJintUQEUxt6j/view?usp=sharing)
+- [About Final Project](https://drive.google.com/file/d/1fj2tYdPfdow5VGSL8-Kngc3VDDVHCjRD/view?usp=sharing)
 
 ## Features
 - Mood-based recipe recommendations

@@ -39,9 +39,7 @@ function Main({ handleClick, handleStartCooking, completed }) {
             ))}
           </ul>
 
-          <button className="cards__btn" type="submit">
-            {" "}
-            {/* disabled={isEmpty} */}
+          <button className="cards__btn" type="submit" disabled={isEmpty}>
             Start cooking!
           </button>
         </section>
