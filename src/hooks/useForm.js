@@ -29,7 +29,7 @@ function useForm(defaultValues) {
     if (!values) return;
     const noErrors = Object.values(error).every((v) => v === "");
     const isEmpty = Object.values(values).some((v) => v === "");
-    setIsDisabled(isEmpty);
+    setIsDisabled(isEmpty || !noErrors);
   }, [error]);
 
   return {

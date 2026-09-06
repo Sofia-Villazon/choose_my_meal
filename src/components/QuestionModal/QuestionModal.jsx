@@ -1,31 +1,19 @@
-import "./AddItemModal.css";
+import "./QuestionModal.css";
 
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
+
+import CurrentUserContex from "../../hooks/contexts/CurrentUserContext";
+
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import useForm from "../../hooks/useForm";
 import { answers } from "../../utils/constants";
 
-function AddItemModal({
-  questions,
-  number,
-  isOpen,
-  closeActiveModal,
-  handleLogAnswer,
-  setCompleted,
-  completed,
-}) {
+function QuestionModal({ number, isOpen, closeActiveModal, handleLogAnswer }) {
+  const { questions } = useContext(CurrentUserContex);
   let index;
   number === undefined ? (index = 0) : (index = number);
   const questionInfo = Object.values(questions)[index];
-  const {
-    //   handleImage,
-    error,
-    values,
-    setValues,
-    handleChange,
-    formHandleChange,
-  } = useForm(answers);
-  // const test = values.time;
+  const { error, values, handleChange } = useForm(answers);
 
   const isEmpty = values[questionInfo.type] === "";
 
@@ -34,7 +22,7 @@ function AddItemModal({
     const hasErrors = Object.values(error).some((e) => e !== "");
 
     if (!hasErrors) {
-      handleLogAnswer(questionInfo.type, values[questionInfo.type]);
+      handleLogAnswer(questionInfo.type, values[questionInfo.type], number);
     }
   };
 
@@ -50,7 +38,6 @@ function AddItemModal({
       closeActiveModal={closeActiveModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
-      error={error}
       isDisabled={isEmpty}
     >
       <fieldset className="modal__fieldset">
@@ -61,16 +48,16 @@ function AddItemModal({
             <li className="modal__radio-btn" key={index}>
               <input
                 type="radio"
-                id={`type-${answer.toLowerCase()}-input`}
+                id={`type-${answer}-input`}
                 className="modal__radio-input"
                 name={`${questionInfo.type}`}
                 required
-                value={answer.toLowerCase()}
+                value={answer}
                 onChange={handleChange}
-                checked={values[questionInfo.type] === answer.toLowerCase()}
+                checked={values[questionInfo.type] === answer}
               />
               <label
-                htmlFor={`type-${answer.toLowerCase()}-input`}
+                htmlFor={`type-${answer}-input`}
                 className="modal__label_radio"
               >
                 {answer}
@@ -82,4 +69,4 @@ function AddItemModal({
     </ModalWithForm>
   );
 }
-export default AddItemModal;
+export default QuestionModal;

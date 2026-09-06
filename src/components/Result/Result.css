@@ -12,10 +12,11 @@
   grid-template-rows: 139px 139px min-content;
   grid-template-areas:
     "tl tm cg"
-    "tl tm ig"
+    "tl tm cg"
+    "tl tm cg"
+    "rc rc ig"
     "rc rc ig";
 
-  /* justify-content: center; */
   gap: 15px;
   margin-top: 46px;
   max-width: 1390px;
@@ -34,6 +35,7 @@
   padding: 20px;
   width: 100%;
   height: 100%;
+  overflow: clip;
 }
 
 .result__card_title {
@@ -52,7 +54,6 @@
   width: 100%;
   max-width: 901px;
   grid-area: rc;
-  height: fit-content;
 }
 
 .result__card_ingredients {
@@ -66,6 +67,35 @@
   margin-bottom: 10px;
   color: #fff;
   font-weight: 500;
+  text-size-adjust: auto;
+}
+
+.result__card__list {
+  padding: 20px 10px;
+  width: 100%;
+  text-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.result__card__list_category {
+  padding: 0;
+  height: fit-content;
+  columns: 2;
+  column-rule: dashed 2px #fcf1df;
+  column-gap: 20px;
+}
+
+.result__card__list_recipe {
+  margin: 0;
+  padding: 0 10px;
+  width: 100%;
+  height: fit-content;
+  max-width: 743px;
+  columns: 2;
+  column-rule: dashed 2px #fcf1df;
+  column-gap: 40px;
 }
 
 .result__card__text {
@@ -75,19 +105,41 @@
   line-height: 30px;
   height: fit-content;
   color: #6d2c28;
+  width: 100%;
+}
+
+.result__card__text_ingedients {
+  max-width: 334px;
+  list-style-type: circle;
+  list-style-position: inside;
+}
+
+.result__card__text_recipe {
+  width: 100%;
+  list-style-type: circle;
+  list-style-position: inside;
+  padding: 5px 0px;
+}
+
+.result__card__text_category {
+  list-style-type: circle;
+  list-style-position: inside;
+  width: fit-content;
+  text-wrap: wrap;
 }
 
 .result__card__image {
   width: 100%;
-  height: 196px;
+  height: fit-content;
+
   object-fit: cover;
   border-radius: 16px;
   margin-bottom: 10px;
-  background-image: url(../../assets/FrenchToast.png);
-  background-size: cover;
+  background-image: url(../../assets/images/FrenchToast.png);
+  /* background-size: cover; */
 }
 
-@media screen and (max-width: 766px) {
+@media screen and (max-width: 1080px) {
   .result__title {
     margin: 22px 0 20px;
     font-size: 36px;
@@ -104,5 +156,13 @@
 
   .result__card__title {
     font-size: 20px;
+  }
+
+  .result__card_recipe {
+    height: 100%;
+  }
+
+  .result__card__list_category {
+    max-height: 100%;
   }
 }

@@ -4,34 +4,8 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { defaultLogData } from "../../utils/constants";
 import { useEffect } from "react";
 
-function LoginModal({
-  isOpen,
-  onSignin,
-  closeActiveModal,
-  toggleModal,
-  loginData,
-  setLoginData,
-}) {
-  const {
-    setUserDataL,
-    handleInput,
-    error,
-    isDisabled,
-    values,
-    setValues,
-    handleChange,
-  } = useForm(defaultLogData);
-
-  const onLogin = (e) => {
-    e.preventDefault();
-    onSignin(values);
-  };
-
-  useEffect(() => {
-    if (isOpen) {
-      setValues(defaultLogData);
-    }
-  }, [isOpen]);
+function LoginModal({ isOpen, closeActiveModal, toggleModal }) {
+  const { error, isDisabled, values, handleChange } = useForm(defaultLogData);
 
   return (
     <>
@@ -41,12 +15,10 @@ function LoginModal({
         isOpen={isOpen}
         closeActiveModal={closeActiveModal}
         changeName="or Register"
-        onSubmit={onLogin}
         isDisabled={isDisabled}
         toggleModal={toggleModal}
       >
         <label htmlFor="login-email-input" className="modal__label">
-          Email
           <span className="modal__error" id="login-email-input-error">
             {error.email}
           </span>
@@ -62,7 +34,6 @@ function LoginModal({
           />
         </label>
         <label htmlFor="login-password-input" className="modal__label">
-          Password
           <span className="modal__error" id="login-password-input-error">
             {error.password}
           </span>

@@ -35,7 +35,7 @@
   display: grid;
   /* grid-template: 1fr 1fr 1fr; */
   grid-template-columns: repeat(auto-fit, 313px);
-  grid-template-rows: repeat(4, minmax(195px, 414.73px));
+  grid-template-rows: repeat(auto-fit, minmax(195px, 414.73px));
   row-gap: 47px;
   column-gap: 100px;
   margin-top: 34px;
@@ -46,19 +46,18 @@
 
 .cards__btn {
   margin: 0 auto;
-  height: 150px;
-  width: 200px;
-  background-image: url(../../assets/button_custom.svg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: transparent;
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 20/16;
+
+  background: center / contain no-repeat
+    url(../../assets/images/button_custom.svg);
   border: none;
   color: #fcf1df;
   font-size: 24px;
   text-align: center;
-  font-family: "Cabinet Grotesk";
-  padding-bottom: 30px;
+  font-family: "Roboto";
+  padding: 0 0 40px;
 }
 
 .cards__btn:hover {
@@ -104,8 +103,14 @@
     padding: 0;
     padding-bottom: 107px;
     grid-template-columns: repeat(auto-fit, 138px);
-    grid-template-rows: repeat(4, 194px);
+    grid-template-rows: repeat(auto-fit, 194px);
     row-gap: 30.74px;
     column-gap: 21px;
+  }
+
+  .cards__btn {
+    width: 138px;
+    font-size: 16px;
+    padding: 0 0 30px;
   }
 }

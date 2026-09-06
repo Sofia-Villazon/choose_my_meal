@@ -1,19 +1,15 @@
-// import { useContext } from "react";
-
 import ItemCard from "../ItemCard/ItemCard";
-import useForm from "../../hooks/useForm";
-// import { CurrentTemperatureUnitContext } from "../../hooks/contexts/CurrentTemperatureUnitContext";
 
 import "./Main.css";
 
-function Main({
-  answers,
-  questions,
-  handleClick,
-  handleStartCooking,
-  completed,
-  userAnswers,
-}) {
+import { useContext } from "react";
+
+import CurrentUserContex from "../../hooks/contexts/CurrentUserContext";
+
+function Main({ handleClick, handleStartCooking, completed }) {
+  const { questions, userAnswers, resultRecipe } =
+    useContext(CurrentUserContex);
+
   const isEmpty = Object.values(userAnswers).some((v) => v === "");
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,12 +39,9 @@ function Main({
             ))}
           </ul>
 
-          <button className="cards__btn" type="submit" disabled={isEmpty}>
-            <span
-            // className="modal__error" id="garment-name-input-error"
-            >
-              {/* {error} */}
-            </span>
+          <button className="cards__btn" type="submit">
+            {" "}
+            {/* disabled={isEmpty} */}
             Start cooking!
           </button>
         </section>

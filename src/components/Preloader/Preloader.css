@@ -1,0 +1,45 @@
+.custom-preloader {
+  height: 700px;
+  position: relative;
+}
+.custom-preloader__circle {
+  display: block;
+  width: 90px;
+  height: 90px;
+  background-image: url(../../assets/images/Logo.svg);
+  background-size: contain;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  animation: spin 1s infinite linear;
+}
+
+.custom-preloader__circle_error {
+  animation-name: none;
+}
+
+.custom-preloader__text {
+  width: fit-content;
+  text-align: center;
+  max-width: 500px;
+  height: fit-content;
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-family: "Roboto";
+  color: #6d2c28;
+  margin: auto;
+  font-size: 16px;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}

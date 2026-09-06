@@ -12,11 +12,10 @@ function ModalWithForm({
   isDisabled,
   hiddenButton,
   // formHandleChange,
-  // changeName,
-  // toggleModal,
+  changeName,
+  toggleModal,
 }) {
   // const { setIsChecked } = useForm();
-  console.log(isDisabled);
   return (
     <section className={`modal ${isOpen ? "modal_is-opened" : ""}`}>
       <div className="modal__container">
@@ -39,9 +38,9 @@ function ModalWithForm({
             <button
               className="modal__change-btn"
               type="button"
-              // onClick={toggleModal}
+              onClick={toggleModal}
             >
-              {/* {changeName} */}
+              {changeName}
             </button>
           </div>
         </form>

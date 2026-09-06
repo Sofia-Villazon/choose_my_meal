@@ -1,16 +1,6 @@
 import "./ItemCard.css";
 
-import useForm from "../../hooks/useForm";
-
 function ItemCard({ question, onClick, completed, number, userAnswers }) {
-  const { values } = useForm();
-  // console.log(values);
-  // if (values[question.type] !== undefined) {
-  //   setCompleted({ ...completed, [question.type]: true });
-  // }
-  // values[question.type] !== undefined
-  //   ? setCompleted(true)
-  //   : setCompleted(false); // Replace with actual completion logic
   return (
     <>
       <li

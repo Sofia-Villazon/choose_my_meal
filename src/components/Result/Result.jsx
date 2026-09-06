@@ -1,63 +1,85 @@
 import "./Result.css";
-import foodImage from "../../assets/FrenchToast.png";
+
+import { useContext } from "react";
+
+import CurrentUserContex from "../../hooks/contexts/CurrentUserContext";
 
 function Result() {
+  const { userAnswers, resultRecipe } = useContext(CurrentUserContex);
+
+  const time = () => {
+    if (
+      resultRecipe.cookingTime === null ||
+      resultRecipe.cookingTime === undefined ||
+      resultRecipe.cookingTime === "" ||
+      resultRecipe.cookingTime === "0 minutes"
+    ) {
+      return `${userAnswers.time}`;
+    } else {
+      return resultRecipe.cookingTime;
+    }
+  };
+
   return (
     <div className="result">
       <h1 className="result__title">What should I eat?</h1>
       <div className="result__cards ">
         <div className="result__card result__card_title">
-          <h2 className="result__card__title">FRENCH TOAST</h2>
+          <h2 className="result__card__title">
+            {resultRecipe.name.toUpperCase()}
+          </h2>
           <img
-            src={foodImage}
-            alt="French Toast"
+            src={resultRecipe.photo}
+            alt={resultRecipe.name}
             className="result__card__image"
           />
         </div>
         <div className="result__card result__card_time">
           <h2 className="result__card__title">COOKING TIME:</h2>
-          <p className="result__card__text"></p>
+          <p className="result__card__text">{time()}</p>
         </div>
         <div className="result__card result__card_categories">
           <h2 className="result__card__title">CATEGORIES</h2>
-          <p className="result__card__text"></p>
+          <ul className="result__card__list_category">
+            {resultRecipe.categories.map((category, index) => (
+              <li
+                className="result__card__text result__card__text_category"
+                key={index}
+              >
+                {category[0].toUpperCase() +
+                  category.replaceAll("_", " ").slice(1)}
+              </li>
+            ))}
+          </ul>
         </div>
         <div className="result__card result__card_ingredients">
           <h2 className="result__card__title">INGREDIENTS</h2>
-          <p className="result__card__text"></p>
+
+          {resultRecipe.ingredients.map((section, index) => (
+            <ul key={index} className="result__card__list">
+              {section.map((ingredient, index) => (
+                <li
+                  className="result__card__text result__card__text_ingedients"
+                  key={index}
+                >
+                  {ingredient.replaceAll("-", " ").toLowerCase()}
+                </li>
+              ))}
+            </ul>
+          ))}
         </div>
         <div className="result__card result__card_recipe">
           <h2 className="result__card__title">RECIPE</h2>
-          <p className="result__card__text">
-            {" "}
-            Ce n’est pas une blague David, ton programme a réellement fonctionné
-            et je suis là. » Dit Prélude. Et suivit une longue explication de
-            Prélude quant à son existence. Comment avait-il fait pour sortir de
-            l’ordinateur de David pour s’installer sur Internet, et de ce fait
-            sur tous les ordinateurs reliés à Internet. Les explications
-            continuèrent pendant une bonne heure. David laissait parler Prélude.
-            Personne n’intervenait. Tout le monde présent, généraux,
-            informaticiens, simples gardes, tous étaient stupéfiaient. Une
-            voiture venait d’arriver de l’autre côté de la barrière. Une
-            personne sortit. Un militaire. Il était comme dans les films de
-            guerre pensa David. Les décorations remplissaient l’avant de sa
-            veste. Il s’approcha de la voiture où se trouvait David. Le
-            chauffeur ouvrit la fenêtre. Ne t’inquiète pas, elle n’a rien pour
-            l’instant. Par contre, dès que je serais relié au réseau, Florence
-            ne sera plus. Tu comprends, je ne peux pas laisser Florence me gêner
-            dans ma tâche. Et puis, elle en sait beaucoup trop sur moi. Oui et
-            non. Ce n'est pas une blague, mais David y est pour quelque chose.
-            Il a créé un programme sans le savoir. Ce programme se nomme
-            Prélude. Il vit sur Internet à travers tout le réseau. Chaque
-            ordinateur connecté connait Prélude. Chaque ordinateur est une
-            partie de Prélude. Le réseau est Prélude. David avait dû s’asseoir
-            lorsqu’il avait entendu le prénom Florence. Il était devenu blanc un
-            instant. Il allait peut-être perdre Florence avant même de lui avoir
-            avoué son amour. Il devait empêcher Prélude de continuer dans son
-            délire. Mais comment pouvait-il stopper ce parasite créé par lui
-            quelques années auparavant ? Ce n’était pas un adversaire ordinaire.
-            David avait déjà détruit plus d’un virus, mais
-          </p>
+          <ul className="result__card__list_recipe">
+            {resultRecipe.recipe.map((step, index) => (
+              <li
+                className="result__card__text result__card__text_recipe"
+                key={index}
+              >
+                {step}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

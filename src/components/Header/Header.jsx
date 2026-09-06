@@ -1,14 +1,21 @@
 import "./Header.css";
-import logo from "../../assets/Logo.svg";
+import logo from "../../assets/images/Logo.svg";
 import { NavLink } from "react-router-dom";
-// import { useContext } from "react";
 
-function Header({ currentTab, setCurrentTab, handleClickMenu, activeModal }) {
+function Header({
+  handleClickMenu,
+  handleLoginClick,
+  handleRegisterClick,
+  currentTab,
+  activeModal,
+  closeActiveModal,
+}) {
   window.location.pathname === "/"
     ? (currentTab = "Quizz")
     : window.location.pathname === "/About"
       ? (currentTab = "About")
-      : (currentTab = "Result");
+      : (currentTab = "");
+
   return (
     <header className="header">
       <div className="header__section">
@@ -22,23 +29,33 @@ function Header({ currentTab, setCurrentTab, handleClickMenu, activeModal }) {
             className={`header__menu-tabs ${activeModal === "mobile menu" ? "" : "header__menu-tabs_inactive"}`}
           >
             <NavLink
-              className={`header__menu-tab ${currentTab === "About" ? "header__menu-tab_active" : ""}`}
-              to="/About"
-            >
-              About
-            </NavLink>
-            <NavLink
               className={`header__menu-tab ${currentTab === "Quizz" ? "header__menu-tab_active" : ""}`}
               to="/"
-              onClick={() => setCurrentTab("Quizz")}
+              onClick={closeActiveModal}
             >
               Quizz
             </NavLink>
+            <NavLink
+              className={`header__menu-tab ${currentTab === "About" ? "header__menu-tab_active" : ""}`}
+              to="/About"
+              onClick={closeActiveModal}
+            >
+              About
+            </NavLink>
+
             <div className="header__reg-btns">
-              <button className="header__reg-btn" type="button">
+              <button
+                className="header__reg-btn"
+                type="button"
+                onClick={handleLoginClick}
+              >
                 Login
               </button>
-              <button className="header__reg-btn" type="button">
+              <button
+                className="header__reg-btn"
+                type="button"
+                onClick={handleRegisterClick}
+              >
                 Signin
               </button>
             </div>
